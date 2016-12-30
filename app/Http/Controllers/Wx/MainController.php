@@ -23,14 +23,14 @@ class MainController extends Controller
 		info(json_encode($data));
 		$tmpArr1 = [
 			'path' => request()->path(),
-			'fullpath' => request()->fullpath(),
+			'fullpath' => request()->fullUrl(),
 			'method' => request()->method(),
 			'data' => $tmpArr,
 		];
 		info( json_encode($tmpArr1));
 
 		if( $tmpStr == $signature ){
-			return 'true';
+			return $tmpStr;
 		}else{
 			return 'false';
 		}
