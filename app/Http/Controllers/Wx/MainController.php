@@ -20,19 +20,10 @@ class MainController extends Controller
 		sort($tmpArr);
 		$tmpStr = sha1( implode( $tmpArr ) );
 
-		info(json_encode($data));
-		$tmpArr1 = [
-			'path' => request()->path(),
-			'fullpath' => request()->fullUrl(),
-			'method' => request()->method(),
-			'data' => $tmpArr,
-		];
-		info( json_encode($tmpArr1));
-
 		if( $tmpStr == $signature ){
-			return $tmpStr;
-		}else{
-			return 'false';
+			return $data['echostr'];
+		} else {
+			info(sprintf('valid failed, tmpstr:%s, signature:%s', $tmpstr, $signature));
 		}
 
     }
