@@ -11,14 +11,6 @@ class MainController extends Controller
     {
     	$data = request()->all();
 
-    	$data = [
-    		"signature" => '1',
-    		"timestamp" => '1',
-    		"nonce" => '1',
-    		"echostr" => '1',
-    		"token" => '1',
-    	];
-
     	$signature = $data["signature"];
         $timestamp = $data["timestamp"];
         $nonce = $data["nonce"];	
