@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
-    public function index()
+    public function validate()
     {
     	$data = request()->all();
 
@@ -21,6 +21,13 @@ class MainController extends Controller
 		$tmpStr = sha1( implode( $tmpArr ) );
 
 		info(json_encode($data));
+		$tmpArr1 = [
+			'path' => request()->path(),
+			'fullpath' => request()->fullpath(),
+			'method' => request()->method(),
+			'data' => $tmpArr,
+		];
+		info( json_encode($tmpArr1));
 
 		if( $tmpStr == $signature ){
 			return 'true';

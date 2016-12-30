@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
+	return true;
     return view('welcome');
 });
 
-Route::get('/w', 'Wx\MainController@index');
+Route::any('/w', 'Wx\MainController@validate');
