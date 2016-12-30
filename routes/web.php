@@ -16,4 +16,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::any('/w', 'Wx\MainController@validate');
+Route::any('/w', 'Wx\MainController@checkSignature');

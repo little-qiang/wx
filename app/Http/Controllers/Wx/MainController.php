@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
-    public function validate()
+    public function checkSignature()
     {
     	$data = request()->all();
 
