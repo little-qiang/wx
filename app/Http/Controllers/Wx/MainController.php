@@ -23,7 +23,7 @@ class MainController extends Controller
 		if( $tmpStr == $signature ){
 			return $data['echostr'];
 		} else {
-			info(sprintf('valid failed, tmpstr:%s, signature:%s', $tmpstr, $signature));
+			info(sprintf('valid failed, tmpstr:%s, signature:%s', $tmpStr, $signature));
 		}
 
     }
