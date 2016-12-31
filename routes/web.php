@@ -12,8 +12,9 @@
 */
 
 Route::get('/', function () {
-	return true;
     return view('welcome');
 });
 
-Route::any('/w', 'Wx\MainController@checkSignature');
+Route::get('/w', 'Wx\MainController@checkSignature');
+
+Route::get('/w/t', 'Wx\MainController@test');
