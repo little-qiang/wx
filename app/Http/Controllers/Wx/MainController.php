@@ -36,7 +36,7 @@ class MainController extends Controller
     		"appid" => config('wx.appid'),
     		"secret" => config('wx.appsecret'),
     	];
-    	return Curl::to($url)->withData($params)->asJson(true)->get();
+    	return Curl::to($url)->withData($params)->get();
     }
 
     public function getCallbackIp()
@@ -49,6 +49,6 @@ class MainController extends Controller
 
     public function test()
     {
-		var_dump($this->getCallbackIp());    	
+		echo $this->getAccesstoken(); 	
     }
 }
