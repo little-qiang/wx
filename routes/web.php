@@ -16,13 +16,20 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
+	
 	Route::get('/', 'MainController@checkSignature');
 
 	Route::get('/t', 'MainController@test');
 
 	Route::group(['prefix'=>'menu'], function(){
+
 		Route::get('/create', 'MenuController@create');
+
+		Route::get('/get', 'MenuController@get');
+
+		Route::get('/delete', 'MenuController@delete');
+
+
 	});
-    // 控制器在 "App\Http\Controllers\Admin" 命名空间下
 });
 
