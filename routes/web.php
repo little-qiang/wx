@@ -15,13 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
 	
-	Route::get('/', 'MainController@checkSignature');
+	Route::get('/', function(Illuminate\Http\Request $request, App\Models\Wx\Base $modelWx){
+		$modelWx->checkSignature($request->all());
+	});
 
-	Route::get('/t', 'MainController@test');
-
-	Route::group(['prefix'=>'menu'], function(){
+	Route::group(['prefix'=>'menu', 'middleware'=>'wx.access_token'], function(){
 
 		Route::get('/create', 'MenuController@create');
 
