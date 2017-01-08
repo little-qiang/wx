@@ -22,6 +22,13 @@ Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
 		$modelWx->checkSignature($request->all());
 	});
 
+	Route::group(['prefix'=>'receive'], function(){
+
+		Route::post('/subscribe', 'ReceiveController@subscribe');
+
+		Route::get('/cancel', 'ReceiveController@cancel');
+	});
+
 	Route::group(['prefix'=>'menu', 'middleware'=>'wx.access_token'], function(){
 
 		Route::get('/create', 'MenuController@create');
