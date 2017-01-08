@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
+Route::group(['prefix'=>'w', 'namespace' => 'Wx', 'middleware'=>'wx.access_token'], function(){
 	
 	Route::get('/', function(Illuminate\Http\Request $request, App\Models\Wx\Base $modelWx){
 		$modelWx->checkSignature($request->all());
@@ -24,7 +24,11 @@ Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
 
 	Route::post('/', 'MsgController@response');
 
-	Route::group(['prefix'=>'menu', 'middleware'=>'wx.access_token'], function(){
+	Route::get('/t', function(Illuminate\Http\Request $request){
+		dd($request->session()->get('wx_tokeninfo'));
+	});
+
+	Route::group(['prefix'=>'menu'], function(){
 
 		Route::get('/create', 'MenuController@create');
 
@@ -33,6 +37,15 @@ Route::group(['prefix'=>'w', 'namespace' => 'Wx'], function(){
 		Route::get('/delete', 'MenuController@delete');
 
 
+	});
+
+	Route::group(['prefix'=>'material'], function(){
+
+		Route::get('/add', 'MaterialController@add');
+
+		Route::get('/get', 'MaterialController@get');
+
+		Route::get('/list', 'MaterialController@list');
 	});
 });
 

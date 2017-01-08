@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Curl;
 
-class MenuController extends BaseController
+class MenuController
 {
 
 	private $url_menu_prefix = 'https://api.weixin.qq.com/cgi-bin/menu';

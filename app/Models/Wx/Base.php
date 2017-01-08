@@ -21,7 +21,7 @@ class Base
         $sessData = [
             'wx_tokeninfo' => [
                 'access_token' => $arrAccessToken['access_token'],
-                'expires_in' => time()+7000,
+                'expires_in' => time()+3600,
             ]
         ];
         session($sessData);
